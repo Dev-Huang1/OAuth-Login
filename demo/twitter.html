@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Twitter</title>
+    <script src="https://cdn.jsdelivr.net/npm/oauth-js@0.0.7/dist/oauth.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>Please log in using one of the following options:</p>
+    <button id="twitter-login">Login with Twitter</button>
+
+    <script>
+        // Twitter API keys (you should securely store these)
+        const API_KEY = 'YOUR_API_KEY';
+        const API_SECRET_KEY = 'YOUR_API_SECRET_KEY';
+        
+        // Initialize OAuth
+        const oauth = OAuth({
+            consumer: {
+                key: API_KEY,
+                secret: API_SECRET_KEY
+            },
+            signature_method: 'HMAC-SHA1'
+        });
+
+        // Twitter OAuth endpoints
+        const REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token';
+        const AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize';
+        const ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token';
+
+        document.getElementById('twitter-login').addEventListener('click', function() {
+            // Step 1: Request a token
+            oauth.post(REQUEST_TOKEN_URL, {}, {}, function(response) {
+                const requestToken = response.split('&')[0].split('=')[1];
+                const oauthTokenSecret = response.split('&')[1].split('=')[1];
+
+                // Step 2: Redirect user to Twitter for authorization
+                const authUrl = `${AUTHORIZATION_URL}?oauth_token=${requestToken}`;
+                window.location.href = authUrl;
+
+                // Handle the callback and exchange for access token on a secure server
+            });
+        });
+    </script>
+</body>
+</html>
