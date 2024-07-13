@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with Github</title>
-    <link rel="stylesheet" type="text/css" href=../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 <body>
-   <a id="github-login-btn" href="https://github.com/login/oauth/authorize?client_id=Ov23li2WF0kNdzb6LgAr&scope=user" id="login-button">Login with Github</a> 
+   <button id="login-button" onclick="redirectToLink()"></button>
+
+    <script>
+        function redirectToLink() {
+            window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23li2WF0kNdzb6LgAr&scope=user";
+        }
+    </script>
 </body>
 </html>
