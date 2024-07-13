@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login Demo</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        
+</head>
+<body onload="renderButton()">
+    <h1>Google Login Demo</h1>
+    <div id="g_id_onload"
+    data-client_id="229626977144-3n4ch524d69jkbs3f2pl3430hv328fqf.apps.googleusercontent.com"
+    data-context="signin"
+    data-ux_mode="popup"
+    data-login_uri="https://login-test.xyehr.cn/auth/google/callback"
+    data-auto_prompt="false">
+</div>
+<div class="g_id_signin"
+    data-type="standard"
+    data-shape="rectangular"
+    data-theme="outline"
+    data-text="sign_in_with"
+    data-size="large">
+</div>
+
+      <script>
+      function handleCredentialResponse(response) {
+  console.log('ID token:', response.credential);
+  // 在这里处理 ID token，例如发送到服务器进行验证
+}
+
+window.onload = function () {
+  google.accounts.id.initialize({
+    client_id: '229626977144-3n4ch524d69jkbs3f2pl3430hv328fqf.apps.googleusercontent.com',
+    callback: handleCredentialResponse
+  });
+
+  google.accounts.id.renderButton(
+    document.getElementById('buttonDiv'),
+    { theme: 'outline', size: 'large' }  // 自定义按钮样式
+  );
+
+  google.accounts.id.prompt();  // 自动提示用户登录
+}
+
+      </script>
+</body>
+</html>
