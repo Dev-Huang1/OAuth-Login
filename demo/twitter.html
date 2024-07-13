@@ -4,45 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with Twitter</title>
-    <script src="https://cdn.jsdelivr.net/npm/oauth-js@0.0.7/dist/oauth.min.js"></script>
 </head>
 <body>
     <h1>Welcome to My Website</h1>
     <p>Please log in using one of the following options:</p>
-    <button id="twitter-login">Login with Twitter</button>
+    <a href="https://twitter.com/oauth/authenticate?oauth_token=1761433358155063296-ArzfvRENGN0cmF5C3yGlpW69NVyUGG">
+        <img src="https://abs.twimg.com/a/1459546762/img/t1/web/choose_sign_in/plus.png" alt="Login with Twitter">
+        Login with Twitter
+    </a>
 
     <script>
-        // Twitter API keys (you should securely store these)
-        const API_KEY = 'O8bM6qhZME6x9FbDBw563xsE3';
-        const API_SECRET_KEY = '0hwKDcsTfezNgRREgYXsAj1nULX78KwVd4OP4bg6hZP7S4y0i0';
-        
-        // Initialize OAuth
-        const oauth = OAuth({
-            consumer: {
-                key: O8bM6qhZME6x9FbDBw563xsE3,
-                secret: 0hwKDcsTfezNgRREgYXsAj1nULX78KwVd4OP4bg6hZP7S4y0i0
-            },
-            signature_method: 'HMAC-SHA1'
-        });
-
-        // Twitter OAuth endpoints
-        const REQUEST_TOKEN_URL = 'https://api.twitter.com/oauth/request_token';
-        const AUTHORIZATION_URL = 'https://api.twitter.com/oauth/authorize';
-        const ACCESS_TOKEN_URL = 'https://api.twitter.com/oauth/access_token';
-
-        document.getElementById('twitter-login').addEventListener('click', function() {
-            // Step 1: Request a token
-            oauth.post(REQUEST_TOKEN_URL, {}, {}, function(response) {
-                const requestToken = response.split('&')[0].split('=')[1];
-                const oauthTokenSecret = response.split('&')[1].split('=')[1];
-
-                // Step 2: Redirect user to Twitter for authorization
-                const authUrl = `${AUTHORIZATION_URL}?oauth_token=${requestToken}`;
-                window.location.href = authUrl;
-
-                // Handle the callback and exchange for access token on a secure server
-            });
-        });
+        // This is a placeholder URL; you need to replace `YOUR_REQUEST_TOKEN` with the actual token.
+        // This example assumes you have handled token exchange and redirect in the backend.
     </script>
 </body>
 </html>
