@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with Github</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <style>
+        #login-button img {
+            margin-right: 4px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
-   <button id="login-button" onclick="redirectToLink()">Login with Github</button>
+   <button id="login-button" onclick="redirectToLink()">
+       <img src="../assets/logo/github.svg" alt="Github Logo">
+       Login with Github
+   </button>
 
     <script>
         function redirectToLink() {
