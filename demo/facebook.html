@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook login demo</title></title>
     <link rel="stylesheet" type="text/css" href="https://test.xyehr.cn/css/style.css">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=1469439101123359&autoLogAppEvents=1"></script>
+        <script>
+            function login() {
+                FB.login(function(response){
+                    console.log(response);
+                });
+            }
+        </script>
 </head>
 <body>
-    <a id="facebook-login-btn" href="https://www.facebook.com/v10.0/dialog/oauth?client_id=1191164148677330&redirect_uri=https://login-test.xyehr.cn/auth/facebook/callback&scope=email,public_profile">用 Facebook 登录</a>
+        <h1>Facebook登录</h1>
+        <!-- 自定义登录按钮 -->
+        <button id="loginBtn" onclick="login();" >登录</button> 
 </body>
 </html>
