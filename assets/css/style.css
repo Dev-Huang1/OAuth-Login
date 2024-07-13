@@ -7,9 +7,8 @@ body {
     padding: 15px 32px; /* 内边距 */
     text-align: center; /* 居中对齐 */
     text-decoration: none; /* 无下划线 */
-    display: inline-flex; /* 内联弹性布局 */
+    display: flex; /* 使用弹性布局 */
     align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
     font-size: 16px; /* 文字大小 */
     margin: 4px 2px; /* 外边距 */
     cursor: pointer; /* 鼠标指针 */
