@@ -1,4 +1,12 @@
-<html><head></head><body>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook login demo</title></title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+</head>
+<body>
 <script>
   var YOUR_CLIENT_ID = '229626977144-3n4ch524d69jkbs3f2pl3430hv328fqf.apps.googleusercontent.com';
   var YOUR_REDIRECT_URI = 'https://login-test.xyehr.cn/auth/google/callback';
@@ -100,5 +108,6 @@
   }
 </script>
 
-<button onclick="trySampleRequest();">Try sample request</button>
-</body></html>
+<button id="login-button" onclick="trySampleRequest();">Login with Google</button>
+</body>
+</html>
