@@ -16,3 +16,9 @@ body {
     border-radius: 4px; /* 圆角 */
     transition: background-color 0.3s, color 0.3s;
 }
+
+#login-button img {
+            margin-right: 4px;
+            height: 30px;
+            vertical-align: middle;
+        }
