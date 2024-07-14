@@ -3,6 +3,10 @@ body {
             transition: background-color 0.3s, color 0.3s;
         }
 
+h1 {
+    justify-content: center;
+}
+
 #login-button {
     padding: 15px 32px; /* 内边距 */
     text-align: center; /* 居中对齐 */
@@ -15,6 +19,7 @@ body {
     border: none; /* 无边框 */
     border-radius: 4px; /* 圆角 */
     transition: background-color 0.3s, color 0.3s;
+    justify-content: center;
 }
 
 #login-button img {
