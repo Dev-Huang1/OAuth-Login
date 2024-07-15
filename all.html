@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All login demo</title></title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="https://facebook.com/favicon.ico">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=1469439101123359&autoLogAppEvents=1"></script>
+    <script src="assets/js/facebook.js"></script>
+    <script src="assets/js/google.js"></script>
+    <style>
+    #login-button img {
+            margin-right: 4px;
+            height: 30px;
+            vertical-align: middle;
+        }
+  </style>
+</head>
+<body>
+        <h1>All Login Demo</h1>
+        <button id="login-button" onclick="login();" >
+            <img src="../assets/logo/facebook.svg" alt="Facebook Logo">
+            Login with Facebook
+        </button> 
+        <button id="login-button" onclick="redirectToLink()">
+            <img src="https://login-test.xyehr.cn/assets/logo/github.svg" alt="Github Logo">
+            Login with Github
+        </button>
+        <button id="login-button" onclick="trySampleRequest();">
+            <img src="../assets/logo/google.svg" alt="Google Logo">
+            Login with Google
+        </button>
+        <button id="login-button" onclick="redirectToLink2()">
+            <img src="https://raw.githubusercontent.com/Dev-Huang1/Login-test/1447a4343d217559c5c7a2ea813f0cc5cdcd77de/assets/logo/instagram.svg" alt="Instagram Logo">
+            Login with Instagram
+        </button>
 
+  
+        <script>
+            function redirectToLink() {
+                window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23li2WF0kNdzb6LgAr&scope=user";
+            }
+        </script>
+        <script>
+            function redirectToLink2() {
+                window.location.href = "https://api.instagram.com/oauth/authorize?client_id=1219978662502884&redirect_uri=https://login-test.xyehr.cn/auth/instagram/callback&scope=user_profile,user_media&response_type=code";
+            }
+        </script>
+</body>
+</html>
