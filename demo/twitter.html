@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Twitter OAuth 2.0 Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Twitter</title>
 </head>
 <body>
-  <button id="login-button">Login with Twitter</button>
-  <script>
-    const clientId = 'cVlDbFg5bWcwclgwQXZkSVhSU1k6MTpjaQ';
-    const redirectUri = 'https://login-test.xyehr.cn/auth/twitter/callback';
+    <h1>Login with Twitter</h1>
+    <button id="loginBtn">Login with Twitter</button>
 
-    document.getElementById('login-button').addEventListener('click', () => {
-      const authUrl = `https://twitter.com/i/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=tweet.read%20users.read%20follows.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain`;
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const clientId = 'OHhyTHJEVXQybFdKYzlKcnVvcXc6MTpjaQ';
+            const redirectUri = encodeURIComponent('https://login-test.xyehr.cn/auth/twitter/callback');
+            const responseType = 'token';
+            const state = encodeURIComponent('some_random_state');
 
-      window.location.href = authUrl;
-    });
+            const twitterAuthUrl = `https://api.twitter.com/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&state=${state}`;
 
-    window.addEventListener('load', () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const params = new URLSearchParams(hash.slice(1));
-        const accessToken = params.get('access_token');
-        if (accessToken) {
-          // 使用access token与Twitter API交互
-          console.log('Access Token:', accessToken);
-        }
-      }
-    });
-  </script>
+            window.location.href = twitterAuthUrl;
+        });
+    </script>
 </body>
 </html>
