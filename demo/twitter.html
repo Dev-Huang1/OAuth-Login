@@ -11,14 +11,27 @@
 
     <script>
         document.getElementById('loginBtn').addEventListener('click', function() {
-            const clientId = 'OHhyTHJEVXQybFdKYzlKcnVvcXc6MTpjaQ';
-            const redirectUri = encodeURIComponent('https://login-test.xyehr.cn/auth/twitter/callback');
-            const responseType = 'token';
-            const state = encodeURIComponent('some_random_state');
+            // Request Token endpoint
+            const requestTokenUrl = 'https://api.twitter.com/oauth/request_token';
 
-            const twitterAuthUrl = `https://api.twitter.com/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&state=${state}`;
-
-            window.location.href = twitterAuthUrl;
+            // You need to implement this part server-side to get the request token
+            fetch('/get-request-token', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.oauth_token) {
+                    const oauthToken = data.oauth_token;
+                    const oauthTokenSecret = data.oauth_token_secret;
+                    
+                    // Redirect to Twitter for authorization
+                    const twitterAuthUrl = `https://api.twitter.com/oauth/authenticate?oauth_token=${oauthToken}`;
+                    window.location.href = twitterAuthUrl;
+                } else {
+                    console.error('Failed to get request token');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
     </script>
 </body>
