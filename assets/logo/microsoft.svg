@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg xmlns="http://www.w3.org/2000/svg"
-aria-label="Microsoft" role="img"
-viewBox="0 0 512 512"><rect
-width="512" height="512"
-rx="15%"
-fill="#ffffff"/><path
-d="M75 75v171h171v-171z" fill="#f25022"/><path
-d="M266 75v171h171v-171z" fill="#7fba00"/><path
-d="M75 266v171h171v-171z" fill="#00a4ef"/><path
-d="M266 266v171h171v-171z" fill="#ffb900"/></svg>
+<svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#F35325" d="M1 1h6.5v6.5H1V1z"/><path fill="#81BC06" d="M8.5 1H15v6.5H8.5V1z"/><path fill="#05A6F0" d="M1 8.5h6.5V15H1V8.5z"/><path fill="#FFBA08" d="M8.5 8.5H15V15H8.5V8.5z"/></svg>
