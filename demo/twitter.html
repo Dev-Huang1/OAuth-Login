@@ -10,24 +10,39 @@
     <button id="loginButton">Login with Twitter</button>
 
     <script>
-        const API_KEY = 'aLklx59uPPFpSpOQsXuS7i7Ko';
+        const API_KEY = 'GacwVFQhZBX7seerg6bylgtkZ';
         const REDIRECT_URI = 'https://login-test.xyehr.cn/auth/twitter/callback'; // 必须与Twitter应用中设置的重定向URI一致
+        const AUTH_ENDPOINT = 'https://twitter.com/i/oauth2/authorize';
+        const TOKEN_ENDPOINT = 'https://api.twitter.com/oauth2/token';
 
         document.getElementById('loginButton').addEventListener('click', () => {
-            const twitterAuthUrl = `https://api.twitter.com/oauth2/authenticate?response_type=token&client_id=${API_KEY}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=read&state=random_state_string`;
+            const state = Math.random().toString(36).substring(7); // 生成一个随机状态字符串
+            const authUrl = `${AUTH_ENDPOINT}?response_type=code&client_id=${API_KEY}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=tweet.read users.read&state=${state}`;
 
-            window.location.href = twitterAuthUrl;
+            window.location.href = authUrl;
         });
 
-        // 处理重定向后的响应
-        window.onload = () => {
-            const hash = window.location.hash;
-            if (hash) {
-                const token = hash.match(/access_token=([^&]*)/)[1];
-                if (token) {
-                    console.log('Access Token:', token);
-                    // 你可以使用这个token来进行后续的API请求
-                }
+        async function getToken(code) {
+            const credentials = btoa(`${API_KEY}:${API_SECRET_KEY}`);
+            const response = await fetch(TOKEN_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': `Basic ${credentials}`
+                },
+                body: `grant_type=authorization_code&code=${code}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`
+            });
+            const data = await response.json();
+            return data.access_token;
+        }
+
+        window.onload = async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (code) {
+                const token = await getToken(code);
+                console.log('Access Token:', token);
+                // 你可以使用这个token来进行后续的API请求
             }
         };
     </script>
