@@ -1,1 +1,52 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Login Example</title>
+</head>
+<body>
+  <button id="loginBtn">Login with Twitter</button>
+  <div id="userInfo"></div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const apiKey = 'nhxyaJ7pnoK1fYLB1vCkLUJ2b';
+    const apiSecretKey = 'RFgJZ15sPVqyz9yf0YUFpPFF0llgytYJFQHdBewUEMpbsWlevz';
+    const accessToken = '1761433358155063296-mhVrnXQ8BLjZLXfZhIXCamBqesbcSB';
+    const accessTokenSecret = 'IAk4u6RIMz3L8XzMgf7AAMZRmQjozS9o0ZcYUBO2UjOtd';
+    
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      try {
+        const oauth = {
+          oauth_consumer_key: apiKey,
+          oauth_token: accessToken,
+          oauth_signature_method: 'HMAC-SHA1',
+          oauth_timestamp: Math.floor(Date.now() / 1000),
+          oauth_nonce: Math.random().toString(36).substring(7),
+          oauth_version: '1.0',
+        };
+
+        const baseString = `GET&${encodeURIComponent('https://api.twitter.com/1.1/account/verify_credentials.json')}&${encodeURIComponent(new URLSearchParams(oauth).toString())}`;
+        const signingKey = `${apiSecretKey}&${accessTokenSecret}`;
+        const signature = CryptoJS.HmacSHA1(baseString, signingKey).toString(CryptoJS.enc.Base64);
+
+        oauth.oauth_signature = signature;
+
+        const authHeader = 'OAuth ' + Object.keys(oauth).map(key => `${key}="${encodeURIComponent(oauth[key])}"`).join(', ');
+
+        const response = await axios.get('https://api.twitter.com/1.1/account/verify_credentials.json', {
+          headers: { 'Authorization': authHeader }
+        });
+
+        document.getElementById('userInfo').innerText = `Hello, ${response.data.name}`;
+      } catch (error) {
+        console.error(error);
+        alert('Error during authentication');
+      }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</body>
+</html>
