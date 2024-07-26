@@ -1,58 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Twitter Login Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Login</title>
 </head>
 <body>
-  <button id="loginBtn">Login with Twitter</button>
-  <div id="userInfo"></div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-  <script>
-    const apiKey = 'nhxyaJ7pnoK1fYLB1vCkLUJ2b';
-    const apiSecretKey = 'RFgJZ15sPVqyz9yf0YUFpPFF0llgytYJFQHdBewUEMpbsWlevz';
-    const requestTokenURL = 'https://api.twitter.com/oauth/request_token';
-    const authorizeURL = 'https://api.twitter.com/oauth/authorize';
-    const accessTokenURL = 'https://api.twitter.com/oauth/access_token';
-    
-    document.getElementById('loginBtn').addEventListener('click', async () => {
-      try {
-        // Step 1: Get request token
-        const oauth = {
-          oauth_consumer_key: apiKey,
-          oauth_signature_method: 'HMAC-SHA1',
-          oauth_timestamp: Math.floor(Date.now() / 1000),
-          oauth_nonce: Math.random().toString(36).substring(7),
-          oauth_version: '1.0',
-          oauth_callback: 'oob' // 'oob' means out-of-band, you can also set a specific callback URL
-        };
+    <h1>Twitter Login</h1>
+    <button id="loginButton">Login with Twitter</button>
 
-        const baseString = `POST&${encodeURIComponent(requestTokenURL)}&${encodeURIComponent(new URLSearchParams(oauth).toString())}`;
-        const signingKey = `${apiSecretKey}&`;
-        const signature = CryptoJS.HmacSHA1(baseString, signingKey).toString(CryptoJS.enc.Base64);
+    <script>
+        const API_KEY = 'aLklx59uPPFpSpOQsXuS7i7Ko';
+        const REDIRECT_URI = 'https://login-test.xyehr.cn/auth/twitter/callback'; // 必须与Twitter应用中设置的重定向URI一致
 
-        oauth.oauth_signature = signature;
+        document.getElementById('loginButton').addEventListener('click', () => {
+            const twitterAuthUrl = `https://api.twitter.com/oauth2/authenticate?response_type=token&client_id=${API_KEY}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=read&state=random_state_string`;
 
-        const authHeader = 'OAuth ' + Object.keys(oauth).map(key => `${key}="${encodeURIComponent(oauth[key])}"`).join(', ');
-
-        const response = await axios.post(requestTokenURL, null, {
-          headers: { 'Authorization': authHeader }
+            window.location.href = twitterAuthUrl;
         });
 
-        const params = new URLSearchParams(response.data);
-        const oauthToken = params.get('oauth_token');
-        const oauthTokenSecret = params.get('oauth_token_secret');
-
-        // Step 2: Redirect user to Twitter for authorization
-        window.location.href = `${authorizeURL}?oauth_token=${oauthToken}`;
-      } catch (error) {
-        console.error(error);
-        alert('Error during authentication');
-      }
-    });
-  </script>
+        // 处理重定向后的响应
+        window.onload = () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const token = hash.match(/access_token=([^&]*)/)[1];
+                if (token) {
+                    console.log('Access Token:', token);
+                    // 你可以使用这个token来进行后续的API请求
+                }
+            }
+        };
+    </script>
 </body>
 </html>
