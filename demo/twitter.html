@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,42 +10,49 @@
   <div id="userInfo"></div>
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
   <script>
     const apiKey = 'nhxyaJ7pnoK1fYLB1vCkLUJ2b';
     const apiSecretKey = 'RFgJZ15sPVqyz9yf0YUFpPFF0llgytYJFQHdBewUEMpbsWlevz';
-    const accessToken = '1761433358155063296-mhVrnXQ8BLjZLXfZhIXCamBqesbcSB';
-    const accessTokenSecret = 'IAk4u6RIMz3L8XzMgf7AAMZRmQjozS9o0ZcYUBO2UjOtd';
+    const requestTokenURL = 'https://api.twitter.com/oauth/request_token';
+    const authorizeURL = 'https://api.twitter.com/oauth/authorize';
+    const accessTokenURL = 'https://api.twitter.com/oauth/access_token';
     
     document.getElementById('loginBtn').addEventListener('click', async () => {
       try {
+        // Step 1: Get request token
         const oauth = {
           oauth_consumer_key: apiKey,
-          oauth_token: accessToken,
           oauth_signature_method: 'HMAC-SHA1',
           oauth_timestamp: Math.floor(Date.now() / 1000),
           oauth_nonce: Math.random().toString(36).substring(7),
           oauth_version: '1.0',
+          oauth_callback: 'oob' // 'oob' means out-of-band, you can also set a specific callback URL
         };
 
-        const baseString = `GET&${encodeURIComponent('https://api.twitter.com/1.1/account/verify_credentials.json')}&${encodeURIComponent(new URLSearchParams(oauth).toString())}`;
-        const signingKey = `${apiSecretKey}&${accessTokenSecret}`;
+        const baseString = `POST&${encodeURIComponent(requestTokenURL)}&${encodeURIComponent(new URLSearchParams(oauth).toString())}`;
+        const signingKey = `${apiSecretKey}&`;
         const signature = CryptoJS.HmacSHA1(baseString, signingKey).toString(CryptoJS.enc.Base64);
 
         oauth.oauth_signature = signature;
 
         const authHeader = 'OAuth ' + Object.keys(oauth).map(key => `${key}="${encodeURIComponent(oauth[key])}"`).join(', ');
 
-        const response = await axios.get('https://api.twitter.com/1.1/account/verify_credentials.json', {
+        const response = await axios.post(requestTokenURL, null, {
           headers: { 'Authorization': authHeader }
         });
 
-        document.getElementById('userInfo').innerText = `Hello, ${response.data.name}`;
+        const params = new URLSearchParams(response.data);
+        const oauthToken = params.get('oauth_token');
+        const oauthTokenSecret = params.get('oauth_token_secret');
+
+        // Step 2: Redirect user to Twitter for authorization
+        window.location.href = `${authorizeURL}?oauth_token=${oauthToken}`;
       } catch (error) {
         console.error(error);
         alert('Error during authentication');
       }
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 </body>
 </html>
