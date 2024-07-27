@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft OAuth Callback</title>
+</head>
+<body>
+    <div id="userInfo" style="display: none;">
+        <img id="userImage" alt="User Image">
+        <div id="userName"></div>
+        <div id="userEmail"></div>
+    </div>
+
+    <script>
+        async function getUserInfo(accessToken) {
+            const headers = new Headers();
+            const bearer = `Bearer ${accessToken}`;
+            headers.append("Authorization", bearer);
+
+            const options = {
+                method: "GET",
+                headers: headers
+            };
+
+            try {
+                const response = await fetch("https://graph.microsoft.com/v1.0/me", options);
+                const profile = await response.json();
+
+                document.getElementById('userName').innerText = profile.displayName;
+                document.getElementById('userEmail').innerText = profile.mail || profile.userPrincipalName;
+
+                const photoResponse = await fetch("https://graph.microsoft.com/v1.0/me/photo/$value", options);
+                if (photoResponse.ok) {
+                    const photoBlob = await photoResponse.blob();
+                    const photoUrl = URL.createObjectURL(photoBlob);
+                    document.getElementById('userImage').src = photoUrl;
+                } else {
+                    document.getElementById('userImage').alt = 'No profile picture';
+                }
+
+                document.getElementById('userInfo').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching user information:', error);
+            }
+        }
+
+        function handleTokenResponse() {
+            const hashParams = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = hashParams.get('access_token');
+
+            if (accessToken) {
+                getUserInfo(accessToken);
+            } else {
+                console.error('No access token found in the URL');
+            }
+        }
+
+        handleTokenResponse();
+    </script>
+</body>
+</html>
 
