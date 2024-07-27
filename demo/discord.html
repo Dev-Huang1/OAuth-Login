@@ -25,16 +25,15 @@
     </div>
 
     <script>
-        const clientId = '1266601245850992753'; // Replace with your Discord application's client ID
-        const redirectUri = 'https://login-test.xyehr.cn/demo/discord'; // Replace with your redirect URI
-        const scopes = ['identify', 'email']; // Scopes required for the OAuth2 flow
+        const clientId = '1266601245850992753';
+        const redirectUri = 'https://login-test.xyehr.cn/demo/discord';
+        const scopes = ['identify', 'email'];
 
         document.getElementById('login-button').addEventListener('click', () => {
             const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes.join('%20')}`;
             window.location.href = authUrl;
         });
 
-        // Function to extract the access token from the URL hash
         function getAccessToken() {
             const hash = window.location.hash;
             if (hash) {
@@ -44,7 +43,6 @@
             return null;
         }
 
-        // Function to fetch user information using the access token
         async function fetchUserInfo(accessToken) {
             const response = await fetch('https://discord.com/api/users/@me', {
                 headers: {
@@ -54,12 +52,10 @@
             return response.json();
         }
 
-        // When the page loads, check if there's an access token in the URL hash
         window.onload = async () => {
             const accessToken = getAccessToken();
             if (accessToken) {
                 const userInfo = await fetchUserInfo(accessToken);
-                document.getElementById('avatar').src = getAvatarUrl(userInfo);
                 document.getElementById('avatar').src = getAvatarUrl(userInfo);
                 document.getElementById('username').textContent = `Username: ${userInfo.username}`;
                 document.getElementById('id').textContent = `ID: ${userInfo.id}`;
@@ -72,12 +68,10 @@
             if (userInfo.avatar) {
                 return `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`;
             } else {
-                // Default avatar URL if user has no custom avatar
                 const defaultAvatarId = parseInt(userInfo.discriminator) % 5;
                 return `https://cdn.discordapp.com/embed/avatars/${defaultAvatarId}.png`;
             }
         };
-
     </script>
 </body>
 </html>
