@@ -13,12 +13,13 @@
         <p id="username"></p>
         <p id="discriminator"></p>
         <p id="id"></p>
+        <p id="email"></p>
     </div>
 
     <script>
         const clientId = '1266601245850992753'; // Replace with your Discord application's client ID
         const redirectUri = 'https://login-test.xyehr.cn/demo/discord'; // Replace with your redirect URI
-        const scopes = ['identify']; // Scopes required for the OAuth2 flow
+        const scopes = ['identify', 'email']; // Scopes required for the OAuth2 flow
 
         document.getElementById('login-button').addEventListener('click', () => {
             const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes.join('%20')}`;
@@ -53,6 +54,7 @@
                 document.getElementById('username').textContent = `Username: ${userInfo.username}`;
                 document.getElementById('discriminator').textContent = `Discriminator: ${userInfo.discriminator}`;
                 document.getElementById('id').textContent = `ID: ${userInfo.id}`;
+                document.getElementById('email').textContent = `Email: ${userInfo.email}`;
                 document.getElementById('user-info').style.display = 'block';
             }
         };
