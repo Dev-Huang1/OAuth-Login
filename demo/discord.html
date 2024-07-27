@@ -18,6 +18,7 @@
     <button id="login-button">Login with Discord</button>
     <div id="user-info" style="display: none;">
         <h2>User Information</h2>
+        <img id="avatar" src="" alt="User Avatar" style="width: 65px; height: 65px;">
         <p id="username"></p>
         <p id="discriminator"></p>
         <p id="id"></p>
@@ -59,6 +60,8 @@
             const accessToken = getAccessToken();
             if (accessToken) {
                 const userInfo = await fetchUserInfo(accessToken);
+                document.getElementById('avatar').src = getAvatarUrl(userInfo);
+                document.getElementById('avatar').src = getAvatarUrl(userInfo);
                 document.getElementById('username').textContent = `Username: ${userInfo.username}`;
                 document.getElementById('discriminator').textContent = `Discriminator: ${userInfo.discriminator}`;
                 document.getElementById('id').textContent = `ID: ${userInfo.id}`;
@@ -66,6 +69,17 @@
                 document.getElementById('user-info').style.display = 'block';
             }
         };
+
+        function getAvatarUrl(userInfo) {
+            if (userInfo.avatar) {
+                return `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}.png`;
+            } else {
+                // Default avatar URL if user has no custom avatar
+                const defaultAvatarId = parseInt(userInfo.discriminator) % 5;
+                return `https://cdn.discordapp.com/embed/avatars/${defaultAvatarId}.png`;
+            }
+        };
+
     </script>
 </body>
 </html>
