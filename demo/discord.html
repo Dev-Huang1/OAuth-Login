@@ -20,7 +20,6 @@
         <h2>User Information</h2>
         <img id="avatar" src="" alt="User Avatar" style="width: 65px; height: 65px;">
         <p id="username"></p>
-        <p id="discriminator"></p>
         <p id="id"></p>
         <p id="email"></p>
     </div>
@@ -63,7 +62,6 @@
                 document.getElementById('avatar').src = getAvatarUrl(userInfo);
                 document.getElementById('avatar').src = getAvatarUrl(userInfo);
                 document.getElementById('username').textContent = `Username: ${userInfo.username}`;
-                document.getElementById('discriminator').textContent = `Discriminator: ${userInfo.discriminator}`;
                 document.getElementById('id').textContent = `ID: ${userInfo.id}`;
                 document.getElementById('email').textContent = `Email: ${userInfo.email}`;
                 document.getElementById('user-info').style.display = 'block';
