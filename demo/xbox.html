@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xbox login demo</title></title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="https://xbox.com/favicon.ico">
+    <style>
+    #login-button img {
+            margin-right: 4px;
+            height: 30px;
+            vertical-align: middle;
+        }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login with Xbox</h1>
+        <button class="login-button" onclick="login()">Login with Xbox</button>
+    </div>
+
+    <script>
+        function login() {
+            window.location.href = "https://login.live.com/oauth20_authorize.srf?client_id=d18b2f04-ffea-497d-b091-77e48819e745&scope=xbl.signin+offline_access&response_type=code&redirect_uri=https%3A%2F%2Flogin-test.xyehr.cn%2Fauth%2Fxbox%2Fcallback";
+        }
+    </script>
+</body>
+</html>
