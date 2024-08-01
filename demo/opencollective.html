@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Collective 登录示例</title>
+    <title>Open Collective Login Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Login with OpenCollective</h1>
-        <button class="login-button" onclick="login()">使用 Open Collective 登录</button>
+        <button class="login-button" onclick="login()">Login with OpenCollective</button>
     </div>
 
     <script>
         function login() {
-            window.location.href = "https://opencollective.com/oauth/authorize?client_id=3dfa0ce60bd1bb65262b&redirect_uri=https://login-test.xyehr.cn/auth/opencollective/callback&response_type=code";
+            window.location.href = "https://opencollective.com/oauth/authorize?client_id=3dfa0ce60bd1bb65262b&response_type=code";
         }
     </script>
 </body>
