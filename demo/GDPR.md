@@ -2,7 +2,7 @@
 
 ## Introduction
 
-At [Your Company Name] ("we," "our," or "us"), we are committed to protecting your personal data and ensuring your privacy. This GDPR Compliance Statement explains how we comply with the General Data Protection Regulation (GDPR), which is a regulation in EU law designed to protect individuals' personal data and privacy.
+At Tech-Art, we are committed to protecting your personal data and ensuring your privacy. This GDPR Compliance Statement explains how we comply with the General Data Protection Regulation (GDPR), which is a regulation in EU law designed to protect individuals' personal data and privacy.
 
 ## Our Commitment to GDPR
 
@@ -36,14 +36,13 @@ For requests related to your data held by Airtable or Notion, please contact the
 
 ## Minors’ Information
 
-Our website is not intended for use by individuals under the age of 16. We do not knowingly collect, use, or store personal data from individuals under 16 years of age. If we become aware that we have collected personal data from a child under 16 without parental consent, we will take steps to delete that data as soon as possible.
+Our website is designed to be accessible to individuals of all ages. We do not knowingly collect, use, or store personal data from minors without proper consent. If we become aware that we have collected personal data from a minor without appropriate consent, we will take steps to delete that data as soon as possible.
 
 ## Security
 
 We are committed to ensuring the security of your data. Although we do not collect personal data directly, we employ various measures to protect data shared with third-party services, including:
 
 - **Secure Communication**: We use encryption protocols to protect data transmitted between your browser and our servers.
-- **Data Processing Agreements**: We have agreements in place with our third-party service providers to ensure they comply with GDPR and handle data responsibly.
 - **Access Controls**: We implement strict access controls to limit who can access and handle any data within our organization.
 
 We also encourage you to review the security measures employed by third-party services like Airtable and Notion.
@@ -56,7 +55,6 @@ We may update this GDPR Compliance Statement from time to time to reflect change
 
 If you have any questions or concerns about our GDPR compliance or data protection practices, please contact us at:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **Address**: [Your Company Address]
+- **Email**: [www@xyehr.cn](mailto:www@xyehr.cn)
 
 We are committed to addressing any issues and ensuring that your rights are respected and protected.
