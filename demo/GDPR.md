@@ -2,7 +2,7 @@
 
 ## Introduction
 
-At [Your Company Name] ("we," "our," or "us"), we are committed to protecting your personal data and ensuring your privacy. This GDPR Compliance Statement explains how we comply with the General Data Protection Regulation (GDPR), which is a regulation in EU law designed to protect individuals' personal data and privacy.
+At Tech-Art, we are committed to protecting your personal data and ensuring your privacy. This GDPR Compliance Statement explains how we comply with the General Data Protection Regulation (GDPR), which is a regulation in EU law designed to protect individuals' personal data and privacy.
 
 ## Our Commitment to GDPR
 
@@ -26,7 +26,6 @@ We recommend reviewing the privacy policies of these third-party services to und
 Although we do not collect personal data, we are committed to ensuring that any data shared with third-party services is protected. We employ appropriate technical and organizational measures to safeguard your data, including:
 
 - **Secure Communication**: Our website uses encryption protocols to protect data transmitted between your browser and our servers.
-- **Data Processing Agreements**: We have agreements in place with our third-party service providers to ensure they comply with GDPR and handle data responsibly.
 
 ## Your Rights Under GDPR
 
@@ -49,7 +48,6 @@ We may update this GDPR Compliance Statement from time to time to reflect change
 
 If you have any questions or concerns about our GDPR compliance or data protection practices, please contact us at:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **Address**: [Your Company Address]
+- **Email**: [www@xyehr.cn](mailto:www@xyehr.cn)
 
 We are committed to addressing any issues and ensuring that your rights are respected and protected.
