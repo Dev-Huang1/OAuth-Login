@@ -48,20 +48,26 @@
             <img src="../assets/logo/discord.svg">
             Login with Discord
         </button>
+        <button id="login-button" onclick="login()">
+            <img src="../assets/logo/xbox.png">
+            Login with Xbox
+        </button>
   
         <script>
             function redirectToLink() {
                 window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23li2WF0kNdzb6LgAr&scope=user";
             }
-        </script>
-        <script>
+        
             function redirectToLink2() {
                 window.location.href = "https://api.instagram.com/oauth/authorize?client_id=1219978662502884&redirect_uri=https://login-test.xyehr.cn/auth/instagram/callback&scope=user_profile,user_media&response_type=code";
             }
-        </script>
-        <script>
+        
             function redirectToLink_Discord() {
                 window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1266601245850992753&redirect_uri=https%3A%2F%2Flogin-test.xyehr.cn%2Fauth%2Fdiscord%2Fcallback&response_type=token&scope=identify%20email"
+            }
+
+            function redirectToXbox() {
+                window.location.href = "https://login.live.com/oauth20_authorize.srf?client_id=d18b2f04-ffea-497d-b091-77e48819e745&scope=xbl.signin+offline_access&response_type=code&redirect_uri=https%3A%2F%2Flogin-test.xyehr.cn%2Fauth%2Fxbox%2Fcallback"
             }
         </script>
 </body>
