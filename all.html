@@ -56,6 +56,10 @@
             <img src="../assets/logo/reddit.svg">
             Login with Reddit
         </button>
+        <button id="login-button" onclick="redirectToOpencollective()">
+            <img src="../assets/logo/opencollective.svg">
+            Login with OpenCollective
+        </button>
   
         <script>
             function redirectToLink() {
@@ -76,6 +80,10 @@
 
             function redirectToReddit() {
                 window.location.href = "https://www.reddit.com/api/v1/authorize?client_id=gQMuGoh085D2GQEOoR_ZMA&response_type=code&state=028201747377223937&redirect_uri=https://login-test.xyehr.cn/auth/reddit/callback&duration=temporary&scope=read"
+            }
+
+            function redirectToOpencollective() {
+                window.location.href = "https://opencollective.com/oauth/authorize?client_id=3dfa0ce60bd1bb65262b&response_type=code"
             }
         </script>
 </body>
