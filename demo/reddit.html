@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit login demo</title></title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="https://www.xbox.com/favicon.ico">
+    <style>
+    #login-button img {
+            margin-right: 4px;
+            height: 30px;
+            vertical-align: middle;
+        }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login with Reddit</h1>
+        <button id="login-button" onclick="login()">
+            <img src="../assets/logo/reddit.svg">
+            Login with Reddit
+        </button>
+    </div>
+
+    <script>
+        function login() {
+            window.location.href = "https://www.reddit.com/api/v1/authorize?client_id=gQMuGoh085D2GQEOoR_ZMA&response_type=code&state=028201747377223937&redirect_uri=https://login-test.xyehr.cn/auth/reddit/callback&duration=temporary&scope=read";
+        }
+    </script>
+</body>
+</html>
