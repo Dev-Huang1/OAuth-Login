@@ -48,9 +48,13 @@
             <img src="../assets/logo/discord.svg">
             Login with Discord
         </button>
-        <button id="login-button" onclick="login()">
+        <button id="login-button" onclick="redirectToXbox()">
             <img src="../assets/logo/xbox.png">
             Login with Xbox
+        </button>
+        <button id="login-button" onclick="redirectToReddit()">
+            <img src="../assets/logo/reddit.svg">
+            Login with Reddit
         </button>
   
         <script>
@@ -68,6 +72,10 @@
 
             function redirectToXbox() {
                 window.location.href = "https://login.live.com/oauth20_authorize.srf?client_id=d18b2f04-ffea-497d-b091-77e48819e745&scope=xbl.signin+offline_access&response_type=code&redirect_uri=https%3A%2F%2Flogin-test.xyehr.cn%2Fauth%2Fxbox%2Fcallback"
+            }
+
+            function redirectToReddit() {
+                window.location.href = "https://www.reddit.com/api/v1/authorize?client_id=gQMuGoh085D2GQEOoR_ZMA&response_type=code&state=028201747377223937&redirect_uri=https://login-test.xyehr.cn/auth/reddit/callback&duration=temporary&scope=read"
             }
         </script>
 </body>
