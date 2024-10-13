@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Login Demo</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <!-- Yandex.RTB -->
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+</head>
+<body>
+    <h1>Login with Telegram</h1>
+    <script async src="https://telegram.org/js/telegram-widget.js?19"
+        data-telegram-login="OauthLoginBot"
+        data-size="large"
+        data-auth-url="https://login-test.xyehr.cn/auth/telegram/callback"
+        data-request-access="write"></script>
+
+    <!-- Yandex.RTB R-A-11714884-1 -->
+<div id="yandex_rtb_R-A-11714884-1"></div>
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-11714884-1",
+        "renderTo": "yandex_rtb_R-A-11714884-1"
+    })
+})
+</script>
+
+    <!-- Yandex.RTB R-A-11714884-2 -->
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-11714884-2",
+        "type": "fullscreen",
+        "platform": "touch"
+    })
+})
+</script>
+
+    <!-- Yandex.RTB R-A-11714884-3 -->
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-11714884-3",
+        "type": "floorAd",
+        "platform": "touch"
+    })
+})
+</script>
+
+    <script>
+        const clientId = '1266601245850992753';
+        const redirectUri = 'https://login-test.xyehr.cn/auth/discord/callback';
+        const scopes = ['identify', 'email'];
+
+        document.getElementById('login-button').addEventListener('click', () => {
+            const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${scopes.join('%20')}`;
+            window.location.href = authUrl;
+        });
+    </script>
+</body>
+</html>
